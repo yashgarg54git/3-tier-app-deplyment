@@ -33,6 +33,9 @@ jobs:
       - name: create tfvars file
         run: printf '%s' "${{ secrets.TF_VARS }}" > terraform.tfvars
 
+      - name: Check tfvars real content
+        run: cat -n terraform.tfvars  
+
       - name: terraform init
         run: terraform init
 
