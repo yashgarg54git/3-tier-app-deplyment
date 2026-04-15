@@ -30,17 +30,13 @@ jobs:
       - name: terraform setup
         uses: hashicorp/setup-terraform@v3
 
-      - name: create tfvars file
-        run: printf '%s' "${{ secrets.TF_VARS }}" > terraform.tfvars.json
-
-      - name: Check tfvars real content
-        run: cat -n terraform.tfvars.json  
-
       - name: terraform init
         run: terraform init
 
       - name: terraform plan
-        run: terraform plan -var-file="terraform.tfvars.json" -out=tfplan 
+        run: terraform plan \
+          -var="vm_admin_password=${{ secrets.VM_PASSWORD }}" \
+          -out=tfplan
 
       - name: terraform apply
         run: terraform apply -auto-approve tfplan
