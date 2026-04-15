@@ -34,9 +34,7 @@ jobs:
         run: terraform init
 
       - name: terraform plan
-        run: terraform plan \
-          -var="vm_admin_password=${{ secrets.VM_PASSWORD }}" \
-          -out=tfplan
+        run: terraform plan -var="vm_admin_password=${{ secrets.VM_PASSWORD }}" -out=tfplan
 
       - name: terraform apply
         run: terraform apply -auto-approve tfplan
