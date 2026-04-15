@@ -90,9 +90,14 @@ variable "vms" {
     resource_group_name  = string
     size                 = string
     admin_username       = string
-    admin_password       = string
     nic_key              = string
   }))
+  
+}
+
+variable "vm_admin_password" {
+  type = string
+  sensitive = true
   
 }
 

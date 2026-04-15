@@ -56,6 +56,7 @@ module "vmm" {
     source = "./modules/08-VM"
     vms = var.vms
     nic_ids = module.nicm.nic_ids
+    vm_admin_password = var.vm_admin_password
     depends_on = [ module.nicm ]
   
 }
